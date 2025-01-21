@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 
 public class Movement : MonoBehaviour
@@ -62,12 +61,24 @@ public class Movement : MonoBehaviour
             isOnObstacle = false;
             isOnGround = true;
         }
+        if(Input.GetKey(KeyCode.R))
+        {
+            //Reset
+            Debug.Log("Reset");
+        }
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        isOnObstacle = collision.gameObject.CompareTag("Hindernis");
-        isOnGround = collision.gameObject.CompareTag("Ground");
+        isOnObstacle = collision.gameObject.CompareTag("Wall");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Hindernis"))
+        {
+            isOnGround = true;
+        }
     }
 
 
