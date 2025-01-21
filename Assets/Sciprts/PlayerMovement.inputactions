@@ -1,0 +1,78 @@
+{
+    "name": "PlayerMovement",
+    "maps": [
+        {
+            "name": "Move",
+            "id": "4402948b-e1fd-4f3c-bc7d-83c3ec23090e",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "4941cd3c-cc4d-4358-a146-9373d893d798",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "3D Vector",
+                    "id": "971be8df-542a-460a-99ab-cb1e7f4a2954",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "ffa0b5bb-6ac5-4828-b08e-880bf9e2ddea",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "9e93861f-9089-439c-a683-7be6c3570079",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "66ceba07-4cde-4582-951c-49618bebdeea",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "dd70ae6d-505a-4131-abc9-b09e9c6b6c5e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
