@@ -13,9 +13,6 @@ public class Movement : MonoBehaviour
     public bool isOnObstacle = false;
     public float jumpForce = 5f;
     public Vector2 mouserot;
-    
-    
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,11 +29,7 @@ public class Movement : MonoBehaviour
             mouserot.y += Input.GetAxis("Mouse X");
             transform.rotation = Quaternion.Euler(0, mouserot.y * 5.0f, 0);
         }
-
-
-
-
-       
+        
         //Movement
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
@@ -66,6 +59,8 @@ public class Movement : MonoBehaviour
             //Reset
             Debug.Log("Reset");
         }
+
+        isOnObstacle = false;
     }
 
     private void OnCollisionStay(Collision collision)
