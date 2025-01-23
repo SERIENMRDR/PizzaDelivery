@@ -58,6 +58,7 @@ public class Movement : MonoBehaviour
         {
             //Reset
             Debug.Log("Reset");
+            Reset();
         }
 
         isOnObstacle = false;
@@ -74,6 +75,14 @@ public class Movement : MonoBehaviour
         {
             isOnGround = true;
         }
+    }
+
+    private void Reset()
+    {
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        gameObject.transform.position = new Vector3(0f, 1f, 0f);
+        body.constraints = RigidbodyConstraints.FreezeAll;
+        
     }
 
 
