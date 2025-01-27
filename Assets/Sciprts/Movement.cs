@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
-   
     public Rigidbody body;
     public float horizontalInput;
     public float forwardInput;
@@ -62,11 +60,20 @@ public class Movement : MonoBehaviour
         }
 
         isOnObstacle = false;
+        if (isOnObstacle)
+        {
+            body.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+            body.useGravity = false;
+            Debug.Log("On Obstacle");
+        }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTrigger(Collider other)
     {
-        isOnObstacle = collision.gameObject.CompareTag("Wall");
+        if (other.tag == "wall")
+        {
+            isOnObstacle = true;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -79,8 +86,8 @@ public class Movement : MonoBehaviour
 
     private void Reset()
     {
-        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        gameObject.transform.position = new Vector3(0f, 1f, 0f);
+        transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+        gameObject.transform.position = new Vector3(1f, 1f, 0f);
         body.constraints = RigidbodyConstraints.FreezeAll;
         
     }
