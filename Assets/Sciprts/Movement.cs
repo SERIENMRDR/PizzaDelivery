@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -42,7 +43,7 @@ public class Movement : MonoBehaviour
 
             body.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             isOnGround = false;
-            isOnObstacle = false;
+
         }
 
         //Obstacle
@@ -59,20 +60,25 @@ public class Movement : MonoBehaviour
             Reset();
         }
 
-        isOnObstacle = false;
-        if (isOnObstacle)
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("On Trigger");
+        if (other.tag == "Wall")
         {
-            body.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-            body.useGravity = false;
-            Debug.Log("On Obstacle");
+            isOnObstacle = true;
+            Debug.Log("On Wall");
         }
     }
 
-    private void OnTrigger(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "wall")
+        if (other.tag == "Wall")
         {
-            isOnObstacle = true;
+            isOnObstacle = false;
+            Debug.Log("On Exit");
         }
     }
 
