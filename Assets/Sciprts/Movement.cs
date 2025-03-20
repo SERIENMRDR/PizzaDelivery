@@ -12,17 +12,24 @@ public class Movement : MonoBehaviour
     public bool isOnObstacle = false;
     public float jumpForce = 5f;
     public Vector2 mouserot;
+    [Range(1,100)]
+    public float maxspeed = 5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        body.maxLinearVelocity = 50f;
     }
     
     
     // Update is called once per frame
     void Update()
     {
+        
+        if (body.velocity.magnitude > maxspeed && isOnObstacle)
+        {
+            body.velocity = body.velocity.normalized * maxspeed;
+        }
         //MouseMovement
         if(Input.GetKey(KeyCode.Mouse0))
         {
