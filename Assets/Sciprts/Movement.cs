@@ -26,9 +26,9 @@ public class Movement : MonoBehaviour
     void Update()
     {
         
-        if (body.velocity.magnitude > maxspeed && isOnObstacle)
+        if (body.linearVelocity.magnitude > maxspeed && isOnObstacle)
         {
-            body.velocity = body.velocity.normalized * maxspeed;
+            body.linearVelocity = body.linearVelocity.normalized * maxspeed;
         }
         //MouseMovement
         if(Input.GetKey(KeyCode.Mouse0))
@@ -98,6 +98,9 @@ public class Movement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets the character to the current Position
+    /// </summary>
     private void Reset()
     {
         transform.rotation = Quaternion.Euler(0f, -90f, 0f);
