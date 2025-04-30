@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Rigidbody body;
+    public ConstantForce force;
     public float horizontalInput;
     public float forwardInput;
     public float speed = 8f;
@@ -25,9 +26,26 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
         
         if (body.linearVelocity.magnitude > maxspeed && isOnObstacle)
         {
+=======
+
+        if (isOnObstacle)
+        {
+            body.useGravity = false;
+            force.force = new Vector3(0, -3, 0);
+        }
+        else
+        {
+            body.useGravity = true;
+            force.force = new Vector3(0, 0, 0);
+        }
+        
+        if (body.linearVelocity.magnitude > maxspeed && isOnObstacle)
+        {
+>>>>>>> Stashed changes
             body.linearVelocity = body.linearVelocity.normalized * maxspeed;
         }
         //MouseMovement
@@ -40,9 +58,9 @@ public class Movement : MonoBehaviour
         //Movement
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
-
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        Vector3 v = new Vector3(horizontalInput, 0, forwardInput);
+        v = transform.rotation * v;
+        body.MovePosition(v * speed * Time.deltaTime + transform.position);
 
         //Jump
         if(Input.GetKeyDown(KeyCode.Space) && isOnGround || Input.GetKeyDown(KeyCode.Space) && isOnObstacle)
@@ -51,6 +69,13 @@ public class Movement : MonoBehaviour
 
             body.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             isOnGround = false;
+
+        }
+        //Dash
+        if(Input.GetKey(KeyCode.LeftControl))
+        {
+            body.AddForce(maxspeed  * transform.forward * forwardInput, ForceMode.Impulse);
+            body.AddForce(maxspeed  * transform.right * horizontalInput, ForceMode.Impulse);
 
         }
 
