@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6030774038719300662}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.871577, y: 2.0819452, z: 3.1055124}
+  m_LocalRotation: {x: 0.1362832, y: -0, z: 0.000000014901158, w: 0.9906699}
+  m_LocalPosition: {x: 0.04, y: 2, z: -4.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1384772947350828161}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15.666, y: 0, z: 0}
 --- !u!20 &3072749606182099626
 Camera:
   m_ObjectHideFlags: 0
@@ -64,11 +64,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 50
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -106,8 +106,9 @@ GameObject:
   - component: {fileID: 3072068158222207591}
   - component: {fileID: 2789478568831959041}
   - component: {fileID: 1747122137294924673}
+  - component: {fileID: 8407338843454333847}
   m_Layer: 0
-  m_Name: Player
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,12 +218,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5b3bf248e93e74bab06201b643af88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 8082499256764834105}
   body: {fileID: 1747122137294924673}
+  currentSpeed: 0
   horizontalInput: 0
   forwardInput: 0
-  speed: 8
+  speed: 1
+  normSpeed: 8
   isOnGround: 0
   isOnObstacle: 0
+  isSprinting: 1
+  sprintspeed: 12
+  readyToDash: 1
+  dashCooldown: 1
+  dashspeed: 12
   jumpForce: 5
   mouserot: {x: 0, y: 0}
 --- !u!54 &1747122137294924673
@@ -249,6 +258,27 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Interpolate: 2
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!65 &8407338843454333847
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8082499256764834105}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000002, y: 2.0052583, z: 1.2122066}
+  m_Center: {x: 2.685391e-16, y: 0.00262928, z: 0.10610321}
